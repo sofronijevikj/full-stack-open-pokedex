@@ -3,7 +3,7 @@ name: Pokedex
 on:
   push:
     branches:
-      - master
+      - main
 
   pull_request:
     branches: [master]
@@ -11,7 +11,7 @@ on:
 
 jobs:
   simple_deployment_pipeline:
-    runs-on: ubuntu-20.04
+if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     
     steps:
       - uses: actions/checkout@v3
